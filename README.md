@@ -1,2 +1,2 @@
-# plp-trabalho
+# Paradigmas de Linguagens de Programação (1001511)
 Trabalhos da disciplina Paradigmas de Linguagens de Programação (1001511) - UFSCar 2021/1 ENPE 4
