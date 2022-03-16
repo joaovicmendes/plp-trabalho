@@ -10,16 +10,6 @@
 % A entrada do problema é uma lista de pessoas:
 %   Lista = [Pessoa1, Pessoa2, Pessoa3, Pessoa4, Pessoa5]
 
-% Definindo uma pessoa
-pessoa([P, M, N, Mat, A, C, S]) :-
-    member(P,   [0, 1, 2, 3, 4]),
-    member(M,   [amarela, azul, preta, verde, vermelha]),
-    member(N,   [ana, jessica, joana, pati, renata]),
-    member(Mat, [artes, biologia, historia, matematica, portugues]),
-    member(A,   [cachorros, cavalos, gatos, hamsters, passaros]),
-    member(C,   [noronha, florianopolis, recife, rio, salvador]),
-    member(S,   [abacaxi, laranja, limao, maracuja, morango]).
-
 % Pessoa1 à esquerda de Pessoa2
 a_esquerda_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 < P2.
 exatamente_a_esquerda_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 is P2 - 1.
@@ -35,6 +25,7 @@ ao_lado_de(Pessoa1, Pessoa2) :-
 
 % Resolução
 resolve(Sol) :-
+    % Solução base vazia
     Sol = [
         [0, M0, N0, Mat0, A0, C0, S0],
         [1, M1, N1, Mat1, A1, C1, S1],
@@ -101,7 +92,7 @@ resolve(Sol) :-
     % Jéssica viajará para Salvador nas férias
     member([_,_,jessica,_,_,salvador,_], Sol),
 
-    % Distribuindo valores restantes
+    % Distribuindo valores restantes e garantingo que todos são valores permitidos
     permutation([M0, M1, M2, M3, M4], [amarela, azul, preta, verde, vermelha]),
     permutation([N0, N1, N2, N3, N4], [ana, jessica, joana, pati, renata]),
     permutation([Mat0, Mat1, Mat2, Mat3, Mat4], [artes, biologia, historia, matematica, portugues]),
