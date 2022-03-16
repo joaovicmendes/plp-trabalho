@@ -7,16 +7,18 @@
 
 % Pessoa é representada por uma lista que contém:
 %   Pessoa = [ posição, mochila, nome, materia, animal, cidade, suco ]
-% A entrada do problema é uma lista de pessoas:
+% A solução do problema é uma lista de pessoas:
 %   Lista = [Pessoa1, Pessoa2, Pessoa3, Pessoa4, Pessoa5]
+% Para obter a resposta, basta rodar o script abaixo e depois executar:
+% ?- resolve(Sol).
 
 % Pessoa1 à esquerda de Pessoa2
-a_esquerda_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 < P2.
-exatamente_a_esquerda_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 is P2 - 1.
+a_esquerda_de([P1|_], [P2|_]) :- P1 < P2. % Não foi preciso para este problema
+exatamente_a_esquerda_de([P1|_], [P2|_]) :- P1 is P2 - 1.
 
 % P1 à direita de P1
-a_direita_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 > P2.
-exatamente_a_direita_de([P1, _, _, _, _, _, _], [P2, _, _, _, _, _, _]) :- P1 is P2 + 1.
+a_direita_de([P1|_], [P2|_]) :- P1 > P2. % Não foi preciso para este problema
+exatamente_a_direita_de([P1|_], [P2|_]) :- P1 is P2 + 1.
 
 % P1 ao lado de P2
 ao_lado_de(Pessoa1, Pessoa2) :- 
@@ -92,7 +94,7 @@ resolve(Sol) :-
     % Jéssica viajará para Salvador nas férias
     member([_,_,jessica,_,_,salvador,_], Sol),
 
-    % Distribuindo valores restantes e garantingo que todos são valores permitidos
+    % Distribuindo valores restantes e garantindo que todos são valores permitidos
     permutation([M0, M1, M2, M3, M4], [amarela, azul, preta, verde, vermelha]),
     permutation([N0, N1, N2, N3, N4], [ana, jessica, joana, pati, renata]),
     permutation([Mat0, Mat1, Mat2, Mat3, Mat4], [artes, biologia, historia, matematica, portugues]),
